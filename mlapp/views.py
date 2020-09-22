@@ -7,7 +7,11 @@ from .serializers import ImageSerializer
 from rest_framework import status
 # Create your views here.
 class PredictAPI(APIView):
-
+    """
+    This endpoint is for prediction.
+    It has field named 'image'  which takes image url on post request.
+    Returns Response with predicted disease.
+    """
     def post(self, request, *args, **kwargs):
         image = request.POST.get('image', False)
         array = process_image(image)
@@ -35,6 +39,11 @@ class PredictAPI(APIView):
 
 
 class ImageUpload(APIView):
+    """
+    This endpoint is for image upload.
+    It has a field named 'image' which takes image file on post request.
+    Returns image url needed to predict.
+    """
     parser_class = (FileUploadParser, )
 
     def post(self, request, *args, **kwargs):

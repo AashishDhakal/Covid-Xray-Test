@@ -18,9 +18,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from mlapp.views import PredictAPI, ImageUpload
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/predict/', PredictAPI.as_view()),
     path('api/imageupload/', ImageUpload.as_view()),
+    path('api/docs/', include_docs_urls(title='CXT API')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
