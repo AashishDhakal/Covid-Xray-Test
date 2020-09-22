@@ -5,6 +5,7 @@ import cv2
 
 
 def process_image(img):
+    print(img)
     img_array = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
     new_array = cv2.resize(img_array, (100, 100))
     input_img = np.array(new_array)

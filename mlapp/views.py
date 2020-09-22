@@ -10,6 +10,7 @@ class PredictAPI(APIView):
 
     def post(self, request, *args, **kwargs):
         image = request.POST.get('image', False)
+        print(image)
         array = process_image(image)
         result = predict(array)
         if result==0:
