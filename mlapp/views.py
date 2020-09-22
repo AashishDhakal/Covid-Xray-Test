@@ -4,13 +4,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.parsers import FileUploadParser
 from .serializers import ImageSerializer
-
+from rest_framework import status
 # Create your views here.
 class PredictAPI(APIView):
 
     def post(self, request, *args, **kwargs):
         image = request.POST.get('image', False)
-        print(image)
         array = process_image(image)
         result = predict(array)
         if result==0:
