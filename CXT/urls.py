@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from mlapp.views import PredictAPI
+from mlapp.views import PredictAPI, ImageUpload
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/predict/', PredictAPI.as_view()),
+    path('api/imageupload/', ImageUpload.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
